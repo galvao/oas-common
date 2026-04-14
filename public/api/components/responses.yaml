@@ -1,0 +1,55 @@
+AuthenticationFailed:
+    description: Autentication Failure (401)
+BadRequest:
+    description: Malformed Request (400)
+    headers:
+        XOffendingHeaders:
+            $ref: components/headers.yaml#/XOffendingHeaders
+Conflict:
+    description: Conflict (409)
+    headers:
+        x-reason:
+            schema:
+                type: string
+HeadersTooLarge:
+    description: Header(s) are too long (413)
+    headers:
+        XOffendingHeaders:
+            $ref: components/headers.yaml#/XOffendingHeaders
+Locked:
+    description: Application in Maintenance (423)
+    headers:
+        Retry-After:
+            description: Datetime to return
+            schema:
+                type: string
+                format: date-time
+MethodNotAllowed:
+    description: Invalid Method (405)
+    headers:
+        XAllowedMethods:
+            $ref: components/headers.yaml#/XAllowedMethods
+NotFound:
+    description: The record doesn't exist (404)
+OK:
+    description: OK (200)
+ProcessingError:
+    description: Error Processing the Request (500)
+    headers:
+        x-reason:
+            schema:
+                type: string
+RecordCreated:
+    description: Successful creation of a record (201)
+NoData:
+    description: Successful manipulation (deletion, modification) of a record (204)
+TooManyRequests:
+    description: Exceeded Request's Limit (429)
+    headers:
+        Retry-After:
+            description: Datetime when more requests will be available
+            schema:
+                type: string
+                format: date-time
+UnprocessableEntity:
+    description: Couldn't process entity (422)

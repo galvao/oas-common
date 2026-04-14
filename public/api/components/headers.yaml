@@ -1,0 +1,14 @@
+XAllowedMethods:
+    description: Allowed method(s) to access the endpoint
+    schema:
+        type: array
+        items:
+            type: string
+        example: ['POST']
+XOffendingHeaders:
+    description: Header(s) that surpassed the limit, are missing, etc...
+    schema:
+        type: array
+        items:
+            type: string
+        example: ['client-id']
