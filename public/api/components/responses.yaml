@@ -1,55 +1,97 @@
 AuthenticationFailed:
-    description: Autentication Failure (401)
+  description: Authentication Failure (401)
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
 BadRequest:
-    description: Malformed Request (400)
-    headers:
-        XOffendingHeaders:
-            $ref: components/headers.yaml#/XOffendingHeaders
+  description: Malformed Request (400)
+  headers:
+    XOffendingHeaders:
+      $ref: components/headers.yaml#/XOffendingHeaders
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
 Conflict:
-    description: Conflict (409)
-    headers:
-        x-reason:
-            schema:
-                type: string
+  description: Conflict (409)
+  headers:
+    x-reason:
+      schema:
+        type: string
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
 HeadersTooLarge:
-    description: Header(s) are too long (413)
-    headers:
-        XOffendingHeaders:
-            $ref: components/headers.yaml#/XOffendingHeaders
+  description: Header(s) are too long (413)
+  headers:
+    XOffendingHeaders:
+      $ref: components/headers.yaml#/XOffendingHeaders
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
 Locked:
-    description: Application in Maintenance (423)
-    headers:
-        Retry-After:
-            description: Datetime to return
-            schema:
-                type: string
-                format: date-time
+  description: Application in Maintenance (423)
+  headers:
+    Retry-After:
+      description: Datetime to return
+      schema:
+        type: string
+        format: date-time
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
 MethodNotAllowed:
-    description: Invalid Method (405)
-    headers:
-        XAllowedMethods:
-            $ref: components/headers.yaml#/XAllowedMethods
+  description: Invalid Method (405)
+  headers:
+    XAllowedMethods:
+      $ref: components/headers.yaml#/XAllowedMethods
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
 NotFound:
-    description: The record doesn't exist (404)
-OK:
-    description: OK (200)
+  description: The record doesn't exist (404)
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
 ProcessingError:
-    description: Error Processing the Request (500)
-    headers:
-        x-reason:
-            schema:
-                type: string
-RecordCreated:
-    description: Successful creation of a record (201)
-NoData:
-    description: Successful manipulation (deletion, modification) of a record (204)
+  description: Error Processing the Request (500)
+  headers:
+    x-reason:
+      schema:
+        type: string
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
 TooManyRequests:
-    description: Exceeded Request's Limit (429)
-    headers:
-        Retry-After:
-            description: Datetime when more requests will be available
-            schema:
-                type: string
-                format: date-time
+  description: Exceeded Request's Limit (429)
+  headers:
+    Retry-After:
+      description: Datetime when more requests will be available
+      schema:
+        type: string
+        format: date-time
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
 UnprocessableEntity:
-    description: Couldn't process entity (422)
+  description: Couldn't process entity (422)
+  content:
+    application/problem+json:
+      schema:
+        $ref: components/schemas/problem.yaml#/Problem
+
+# Success responses
+OK:
+  description: OK (200)
+RecordCreated:
+  description: Successful creation of a record (201)
+NoData:
+  description: Successful manipulation (deletion, modification) of a record (204)
